@@ -4,13 +4,13 @@ Hook is executed at the end of the 'prepare' stage. Usually, when you call 'cord
 It will inject required preferences in the platform-specific projects, based on <universal-links>
 data you have specified in the projects config.xml file.
 */
-
+console.log('afterPrepareHook ******************************************************************************************************************************************************************************** SUCCESS');
 var configParser = require('./lib/configXmlParser.js');
 var androidManifestWriter = require('./lib/android/manifestWriter.js');
 var androidWebHook = require('./lib/android/webSiteHook.js');
-var iosProjectEntitlements = require('./lib/ios/projectEntitlements.js');
-var iosAppSiteAssociationFile = require('./lib/ios/appleAppSiteAssociationFile.js');
-var iosProjectPreferences = require('./lib/ios/xcodePreferences.js');
+// var iosProjectEntitlements = require('./lib/ios/projectEntitlements.js');
+// var iosAppSiteAssociationFile = require('./lib/ios/appleAppSiteAssociationFile.js');
+// var iosProjectPreferences = require('./lib/ios/xcodePreferences.js');
 var ANDROID = 'android';
 var IOS = 'ios';
 
@@ -76,11 +76,11 @@ function activateUniversalLinksInAndroid(cordovaContext, pluginPreferences) {
  */
 function activateUniversalLinksInIos(cordovaContext, pluginPreferences) {
   // modify xcode project preferences
-  iosProjectPreferences.enableAssociativeDomainsCapability(cordovaContext);
+  // iosProjectPreferences.enableAssociativeDomainsCapability(cordovaContext);
 
-  // generate entitlements file
-  iosProjectEntitlements.generateAssociatedDomainsEntitlements(cordovaContext, pluginPreferences);
+  // // generate entitlements file
+  // iosProjectEntitlements.generateAssociatedDomainsEntitlements(cordovaContext, pluginPreferences);
 
-  // generate apple-site-association-file
-  iosAppSiteAssociationFile.generate(cordovaContext, pluginPreferences);
+  // // generate apple-site-association-file
+  // iosAppSiteAssociationFile.generate(cordovaContext, pluginPreferences);
 }
